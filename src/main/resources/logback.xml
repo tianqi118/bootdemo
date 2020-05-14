@@ -2,7 +2,7 @@
 <configuration debug="false" scan="true" scanPeriod="60 seconds">
 
     <contextName>logback</contextName>
-    <property name="log.path" value="/d:/tianqi-test.log"/>
+    <property name="log.path" value="/d:/boot-demo-test.log"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
