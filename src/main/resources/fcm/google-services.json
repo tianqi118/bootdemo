@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "478119800914",
+    "firebase_url": "https://aquiver-biz-test.firebaseio.com",
+    "project_id": "aquiver-biz-test",
+    "storage_bucket": "aquiver-biz-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478119800914:android:705ea04490ee8114f8ef8b",
+        "android_client_info": {
+          "package_name": "com.viva.app.tob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478119800914-e2n2s3d23kul9jcv8pl5v91tfbo3jk54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJN0BaaK7i3c4xqtZ6uMpyWS4JWlqRstA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478119800914-e2n2s3d23kul9jcv8pl5v91tfbo3jk54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
