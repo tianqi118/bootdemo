@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import com.alibaba.fastjson.JSON;
 import com.example.utils.FireBaseUtil;
+import com.google.firebase.messaging.BatchResponse;
+import com.google.firebase.messaging.SendResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +25,7 @@ public class DemoApplicationTests {
     //通知消息题目
     public static String title = "tip";
     //通知消息内容
-    public static String body = "hello world to 宗辉 second";
+    public static String body = "hello world to TEST JSON5";
 
     @Test
     public void contextLoads() {
@@ -41,16 +44,23 @@ public class DemoApplicationTests {
                 //初始化FirebaseApp
                 FireBaseUtil.initSDK(jsonPath, dataUrl, appName);
             }
-
-//            FireBaseUtil.pushSingle(appName, token1, title, body);  //单推
-            FireBaseUtil.registrationTopic(appName, tokens, topic);  //设置主题
-            FireBaseUtil.sendTopicMes(appName, topic, title, body);    //按主题推送
-            FireBaseUtil.cancelTopic(appName, tokens, topic);  //取消主题
-
-//            //安卓设备推送
-//            FireBaseUtil.pushSingleToAndroid(appName, token, title, body);
+            //单推
+            String messageId = FireBaseUtil.pushSingle(appName, token2, title, body, "", null);
+            System.out.println("messageId:" + messageId);
+            //多推
+//            BatchResponse batchResponse = FireBaseUtil.pushMulticast(appName, tokens, title, body, "");
+            //推所有
+//            BatchResponse batchResponse = FireBaseUtil.pushAll(appName, token2, title, body, "");
+//            System.out.println("success:" + batchResponse.getSuccessCount());
+//            List<SendResponse> sendResponses = batchResponse.getResponses();
+//            for (SendResponse response : sendResponses) {
+//                System.out.println("response id:" + response.getMessageId());
+//                System.out.println("response exception:" + response.getMessageId());
+//            }
 //            FireBaseUtil.registrationTopic(appName, tokens, topic);  //设置主题
-//            FireBaseUtil.sendTopicMesToAndroid(appName, topic, title, body);
+//            FireBaseUtil.sendTopicMes(appName, topic, title, body);    //按主题推送
+//            FireBaseUtil.cancelTopic(appName, tokens, topic);  //取消主题
+
 
         } catch (Exception e) {
             e.printStackTrace();
