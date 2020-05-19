@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.FCMSendMessageDto;
-import com.example.utils.FireBaseUtilBak;
+import com.example.utils.FireBaseUtil;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -39,16 +39,16 @@ public class FireBaseController {
         System.setProperty("proxyHost", "127.0.0.1");
         System.setProperty("proxyPort", "8081");
         //如果FirebaseApp没有初始化
-        if (!FireBaseUtilBak.isInit(appName)) {
+        if (!FireBaseUtil.isInit(appName)) {
             String jsonPath = "fcm/google-services.json";
             String dataUrl = "https://xxxx.firebaseio.com/";
             //初始化FirebaseApp
             try {
-                FireBaseUtilBak.initSDK(jsonPath, dataUrl, appName);
+                FireBaseUtil.initSDK(jsonPath, dataUrl, appName);
                 //设置主题
-                FireBaseUtilBak.registrationTopic(appName, tokens, fcmSendMessageDto.getTopic());
+                FireBaseUtil.registrationTopic(appName, tokens, fcmSendMessageDto.getTopic());
                 //按主题推送
-                FireBaseUtilBak.sendTopicMes(appName, fcmSendMessageDto.getTopic(), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
+                FireBaseUtil.sendTopicMes(appName, fcmSendMessageDto.getTopic(), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
             } catch (Exception e) {
                 log.error("推送失败Exception：{}", e);
             }
@@ -56,9 +56,9 @@ public class FireBaseController {
             log.info("如果FirebaseApp已经初始化");
             try {
                 //设置主题
-                FireBaseUtilBak.registrationTopic(appName, tokens, fcmSendMessageDto.getTopic());
+                FireBaseUtil.registrationTopic(appName, tokens, fcmSendMessageDto.getTopic());
                 //按主题推送
-                FireBaseUtilBak.sendTopicMes(appName, fcmSendMessageDto.getTopic(), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
+                FireBaseUtil.sendTopicMes(appName, fcmSendMessageDto.getTopic(), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
             } catch (IOException e) {
                 log.error("推送失败IOException：{}", e);
             } catch (FirebaseMessagingException e) {
@@ -77,14 +77,14 @@ public class FireBaseController {
         System.setProperty("proxyHost", "127.0.0.1");
         System.setProperty("proxyPort", "8081");
         //如果FirebaseApp没有初始化
-        if (!FireBaseUtilBak.isInit(appName)) {
+        if (!FireBaseUtil.isInit(appName)) {
             String jsonPath = "fcm/xxxx-firebase-adminsdk.json";
             String dataUrl = "https://xxxx.firebaseio.com/";
             //初始化FirebaseApp
             try {
-                FireBaseUtilBak.initSDK(jsonPath, dataUrl, appName);
+                FireBaseUtil.initSDK(jsonPath, dataUrl, appName);
                 //单推
-                FireBaseUtilBak.pushSingle(appName, tokens.get(0), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
+                FireBaseUtil.pushSingle(appName, tokens.get(0), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody(),fcmSendMessageDto.getImage(),"");
             } catch (Exception e) {
                 log.error("Exception：{}", e);
             }
@@ -92,10 +92,8 @@ public class FireBaseController {
             log.info("如果FirebaseApp已经初始化");
             try {
                 //单推
-                FireBaseUtilBak.pushSingle(appName, tokens.get(0), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody());
-            } catch (IOException e) {
-                log.error("IOException：{}", e);
-            } catch (FirebaseMessagingException e) {
+                FireBaseUtil.pushSingle(appName, tokens.get(0), fcmSendMessageDto.getTitle(), fcmSendMessageDto.getBody(),fcmSendMessageDto.getImage(),"");
+            }  catch (FirebaseMessagingException e) {
                 log.error("FirebaseMessagingException：{}", e);
             }
         }

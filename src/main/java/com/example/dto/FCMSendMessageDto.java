@@ -26,4 +26,8 @@ public class FCMSendMessageDto {
      * 主题
      */
     private String topic;
+    /**
+     * 图标
+     */
+    private String image;
 }
