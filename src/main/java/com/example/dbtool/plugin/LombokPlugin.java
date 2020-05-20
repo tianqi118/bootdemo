@@ -28,15 +28,15 @@ public class LombokPlugin extends PluginAdapter {
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         //添加domain的import
         topLevelClass.addImportedType("lombok.Data");
-        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
-        topLevelClass.addImportedType("lombok.experimental.Accessors");
+//        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+//        topLevelClass.addImportedType("lombok.experimental.Accessors");
 //        topLevelClass.addImportedType("lombok.AllArgsConstructor");
 
 
         //添加domain的注解
         topLevelClass.addAnnotation("@Data");
-        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
-        topLevelClass.addAnnotation("@Accessors(chain = true)");
+//        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
+//        topLevelClass.addAnnotation("@Accessors(chain = true)");
 
         //添加domain的注释
 //        topLevelClass.addJavaDocLine("/**");
