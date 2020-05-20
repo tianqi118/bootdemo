@@ -9,7 +9,7 @@
     <classPathEntry location="./mysql-connector-java-5.1.40.jar" />
     -->
 
-    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3">
+    <context id="mysql" targetRuntime="MyBatis3">
         <!-- 生成的 Java 文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 格式化 Java 代码 -->
@@ -57,12 +57,12 @@
         </javaClientGenerator>
 
         <!-- tableName:数据库表名；domainObjectName:对应于数据库表的javaBean类名 -->
-        <table tableName="time_zone_table" domainObjectName="TimeZoneTable" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="demo" domainObjectName="Demo"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
             <!-- domainName去掉前缀-->
-         <!--   <domainObjectRenamingRule searchString="^Via" replaceString=""/>-->
+            <!--<domainObjectRenamingRule searchString="Via" replaceString=""/>-->
         </table>
-
 
     </context>
 
